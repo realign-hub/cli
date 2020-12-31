@@ -1,6 +1,6 @@
 {
-  "name": "@re-hub/cli",
-  "version": "0.0.1-alpha",
+  "name": "@re-x/cli",
+  "version": "0.0.1-alpha.0",
   "description": "A cli of all.",
   "bin": {
     "re": "./bin/command.js"
@@ -21,7 +21,7 @@
     "url": "https://github.com/realign-hub/cli/issues"
   },
   "homepage": "https://github.com/realign-hub/cli#readme",
-  "devDependencies": {
+  "dependencies": {
     "boxen": "^5.0.0",
     "chalk": "^4.1.0",
     "commander": "^6.2.1",
@@ -29,5 +29,5 @@
     "request": "^2.88.2",
     "semver": "^7.3.4"
   },
-  "dependencies": {}
+  "devDependencies": {}
 }
