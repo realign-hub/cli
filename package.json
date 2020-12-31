@@ -1,0 +1,33 @@
+{
+  "name": "@re-hub/cli",
+  "version": "0.0.1-alpha",
+  "description": "A cli of all.",
+  "bin": {
+    "re": "./bin/command.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realign-hub/cli.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "ReAlign",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/realign-hub/cli/issues"
+  },
+  "homepage": "https://github.com/realign-hub/cli#readme",
+  "devDependencies": {
+    "boxen": "^5.0.0",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.1",
+    "ora": "^5.2.0",
+    "request": "^2.88.2",
+    "semver": "^7.3.4"
+  },
+  "dependencies": {}
+}
