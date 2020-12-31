@@ -14,6 +14,9 @@ const tools = {
   versions() {
     require('./lib/versions')(options);
   },
+  timestamp(str = '') {
+    require('./lib/timestamp')(options, { str });
+  },
 };
 
 module.exports = tools;
