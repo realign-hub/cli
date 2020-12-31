@@ -1,6 +1,6 @@
 {
   "name": "@re-x/cli",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "A cli of all.",
   "bin": {
     "re": "./bin/command.js"
