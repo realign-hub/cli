@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const logBox = require('./../common/log-box');
+const logBox = binRequire('common/log-box');
 const isNormal = (v = '') => v && v.indexOf('-alpha') === -1 && v.indexOf('-beta') === -1;
 
 module.exports = (options = {}) => {

@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const clipboardy = require('clipboardy');
-const logBox = require('./../common/log-box');
-const date = require('./../common/date');
+const logBox = binRequire('common/log-box');
+const date = binRequire('common/date');
 
 module.exports = (options = {}, cmdOpts = {}) => {
   const {

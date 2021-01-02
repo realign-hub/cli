@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const logBox = require('./../common/log-box');
+const logBox = binRequire('common/log-box');
 
 module.exports = (options = {}) => {
   const {

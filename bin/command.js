@@ -2,31 +2,48 @@
 
 'use strict';
 
-const commander = require('commander');
-const tools = require('./tools');
-const type = require('./common/type');
+// 自定义 require 函数
+global.binRequire = p => require(`${__dirname}/${p}`);
+global.rootRequire = p => require(`${__dirname}/../${p}`);
 
-commander
-  .option('-u, --update', '检查升级版本')
-  .option('-d, --doctor', '检查工程结构')
-  .option('-v, --versions', '查看版本信息')
-  .option('-ts, --timestamp [time string]', '生成时间戳')
-  .parse(process.argv);
+const cmder = require('commander');
+const Config = binRequire('cmd-config');
 
-if (commander.update) {
-  tools.update();
+// 注册 cmd
+Config.forEach((conf, i) => {
+  const {
+    cmd = '',
+    desc = '',
+    action = () => {},
+  } = conf;
+  cmder
+    .command(cmd)
+    .description(desc)
+    .action(action);
+});
+
+cmder.on('--help', () => {
+  console.log();
+  console.log(`  Run re <command> --help for detailed usage of given command.`)
+  console.log();
+});
+
+cmder.commands.forEach(c => c.on('--help', () => console.log()));
+
+if (!process.argv[2]) {
+  cmder.outputHelp();
+  console.log();
   return false;
 }
-if (commander.doctor) {
-  tools.doctor();
-  return false;
-}
-if (commander.versions) {
-  tools.versions();
-  return false;
-}
-if (commander.timestamp) {
-  const str = type.isBoolean(commander.timestamp) ? 'now' : commander.timestamp;
-  tools.timestamp(str);
-  return false;
-}
+
+cmder
+  .arguments('<command>')
+  .action((cmd) => {
+    cmder.outputHelp();
+    console.log(`Unknown command ${cmd}.`);
+    console.log();
+    // process.exitCode = 1;
+    return false;
+  });
+
+cmder.parse(process.argv);
