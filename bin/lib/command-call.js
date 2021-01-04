@@ -19,6 +19,21 @@ const tools = {
       str
     });
   },
+  translate(str = '', engine) {
+    binRequire('lib/translate/index')(options, {
+      str,
+      engine,
+    });
+  },
+  ip() {
+    binRequire('lib/ip/ip')(options);
+  },
+  urlShort(str = '') {
+    binRequire('lib/url/short')(options, { str });
+  },
+  urlQRCode(str = '') {
+    binRequire('lib/url/qrcode')(options, { str });
+  },
 };
 
 module.exports = tools;
