@@ -28,6 +28,7 @@ Config.forEach((conf, i) => {
 cmder
   .command('url [others...]')
   .alias('')
+  .description('🌐\t文本链接')
   .option('-s, --short <link>', 'Short')
   .option('-q, --qrcode <link>', 'QRCode')
   .action((others, cmd) => {
