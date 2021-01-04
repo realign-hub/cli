@@ -8,19 +8,37 @@ global.rootRequire = p => require(`${__dirname}/../${p}`);
 
 const cmder = require('commander');
 const Config = binRequire('cmd-config');
+const cmdCall = binRequire('lib/command-call');
 
 // 注册 cmd
 Config.forEach((conf, i) => {
   const {
     cmd = '',
-    desc = '',
-    action = () => {},
+      alias = '',
+      desc = '',
+      action = () => {},
   } = conf;
   cmder
     .command(cmd)
+    .alias(alias)
     .description(desc)
     .action(action);
 });
+
+cmder
+  .command('url [others...]')
+  .alias('')
+  .option('-s, --short <link>', 'Short')
+  .option('-q, --qrcode <link>', 'QRCode')
+  .action((others, cmd) => {
+    if (cmd.short) {
+      cmdCall.urlShort(cmd.short);
+    } else if (cmd.qrcode) {
+      cmdCall.urlQRCode(cmd.qrcode);
+    } else {
+      console.log('none');
+    }
+  });
 
 cmder.on('--help', () => {
   console.log();
@@ -42,7 +60,6 @@ cmder
     cmder.outputHelp();
     console.log(`Unknown command ${cmd}.`);
     console.log();
-    // process.exitCode = 1;
     return false;
   });
 
