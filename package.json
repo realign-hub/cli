@@ -1,16 +1,17 @@
 {
   "name": "@re-x/cli",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.11",
   "description": "A cli of all.",
   "bin": {
-    "re": "./bin/start.js"
+    "re": "./bin/command.js"
   },
   "scripts": {
     "build": "rm -rf bin && tsc",
     "lint": "npm run eslint",
     "fix": "npm run eslint-fix",
     "eslint": "eslint --cache --ext .js ./bin",
-    "eslint-fix": "eslint --cache --fix --ext .js ./bin"
+    "eslint-fix": "eslint --cache --fix --ext .js ./bin",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "clipboardy": "^2.3.0",
     "commander": "^6.2.1",
     "crypto-js": "^4.0.0",
+    "module-alias": "^2.2.2",
     "moment": "^2.29.1",
     "ora": "^5.2.0",
     "qrcode-terminal": "^0.12.0",
@@ -43,7 +45,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "eslint": "^7.24.0",
-    "module-alias": "^2.2.2",
     "typescript": "^4.2.4"
   },
   "_moduleAliases": {
