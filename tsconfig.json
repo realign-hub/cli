@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["*"],
+      "bin/*": ["bin/*"]
+    },
+
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./bin",
+    "strict": true,
+    "esModuleInterop": true
+  }
+}
