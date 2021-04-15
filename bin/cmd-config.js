@@ -4,7 +4,7 @@ module.exports = [
   {
     cmd: 'timestamp [timeString]',
     alias: 'ts',
-    desc: '⏰\t获取时间戳',
+    desc: '⏰ 获取时间戳',
     action(timeString = '') {
       const str = timeString ? timeString : 'now';
       cmdCall.timestamp(str);
@@ -13,7 +13,7 @@ module.exports = [
   {
     cmd: 'translate <word> [engine]',
     alias: 'tl',
-    desc: '🀄️\t文本翻译',
+    desc: '🀄️ 文本翻译 _ engine => { 百度 -> bd, 有道 -> yd }',
     action(word = '', engine = 'bd') {
       cmdCall.translate(word, engine);
     },
@@ -21,15 +21,31 @@ module.exports = [
   {
     cmd: 'ip',
     alias: '',
-    desc: '🧭\t地址IP',
+    desc: '🧭 地址IP',
     action() {
       cmdCall.ip();
     },
   },
   {
+    cmd: 'short <link>',
+    alias: 'sh',
+    desc: '🔗 生成短链',
+    action(link = '') {
+      cmdCall.urlShort(link);
+    },
+  },
+  {
+    cmd: 'qrcode <link>',
+    alias: 'qr',
+    desc: '🌐 生成二维码',
+    action(link = '') {
+      cmdCall.urlQRCode(link);
+    },
+  },
+  {
     cmd: 'update',
     alias: 'u',
-    desc: '💡\t检查更新',
+    desc: '💡 检查更新',
     action() {
       cmdCall.update();
     },
@@ -37,7 +53,7 @@ module.exports = [
   {
     cmd: 'doctor',
     alias: 'd',
-    desc: '🏥\t体检',
+    desc: '🏥 体检',
     action() {
       cmdCall.doctor();
     },
@@ -45,7 +61,7 @@ module.exports = [
   {
     cmd: 'info',
     alias: 'i',
-    desc: '📝\t版本信息',
+    desc: '📝 版本信息',
     action() {
       cmdCall.info();
     }

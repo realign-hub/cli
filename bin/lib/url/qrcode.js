@@ -5,6 +5,6 @@ module.exports = (options = {}, cmdOpts = {}) => {
     str = ''
   } = cmdOpts;
   console.log();
-  QRCodeTerminal.generate(str);
+  QRCodeTerminal.generate(str, { small: true, });
   console.log();
 };

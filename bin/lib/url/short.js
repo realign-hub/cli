@@ -8,7 +8,7 @@ module.exports = async (options = {}, cmdOpts = {}) => {
   } = cmdOpts;
 
   const res = await superagent
-    .post('https://note.realign.pro/o/short_url')
+    .post('https://api.realign.pro/o/short_url')
     .set('Content-Type', 'application/json')
     .set('x1u-token', 'fae5dc6210e0e1f8b0032485f92695e8')
     .send(JSON.stringify({

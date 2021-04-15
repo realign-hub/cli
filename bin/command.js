@@ -25,22 +25,6 @@ Config.forEach((conf, i) => {
     .action(action);
 });
 
-cmder
-  .command('url [others...]')
-  .alias('')
-  .description('🌐\t文本链接')
-  .option('-s, --short <link>', 'Short')
-  .option('-q, --qrcode <link>', 'QRCode')
-  .action((others, cmd) => {
-    if (cmd.short) {
-      cmdCall.urlShort(cmd.short);
-    } else if (cmd.qrcode) {
-      cmdCall.urlQRCode(cmd.qrcode);
-    } else {
-      console.log('none');
-    }
-  });
-
 cmder.on('--help', () => {
   console.log();
   console.log(`  Run re <command> --help for detailed usage of given command.`)
