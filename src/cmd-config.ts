@@ -43,6 +43,16 @@ export default [
     },
   },
   {
+    cmd: 'emoji <desc>',
+    alias: 'ej',
+    desc: '😃 表情',
+    action(desc = '') {
+      cmdCall.emoji(desc);
+    },
+  },
+
+  // 系统
+  {
     cmd: 'update',
     alias: 'u',
     desc: '💡 检查更新',

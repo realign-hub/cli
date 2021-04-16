@@ -6,6 +6,7 @@ import Translate from './../lib/translate/index';
 import Ip from './../lib/ip/ip';
 import Short from './../lib/url/short';
 import QRCode from './../lib/url/qrcode';
+import Emoji from './../lib/emoji';
 
 const pkg = require('@/package.json');
 
@@ -42,6 +43,9 @@ const tools = {
   },
   urlQRCode(str = '') {
     QRCode(options, { str });
+  },
+  emoji(str = '') {
+    Emoji(options, { str });
   },
 };
 
