@@ -7,6 +7,7 @@ import Ip from './../lib/ip/ip';
 import Short from './../lib/url/short';
 import QRCode from './../lib/url/qrcode';
 import Emoji from './../lib/emoji';
+import ImgMock from '../lib/img-mock';
 
 const pkg = require('@/package.json');
 
@@ -47,6 +48,9 @@ const tools = {
   emoji(str = '') {
     Emoji(options, { str });
   },
+  imgMock(str = '') {
+    ImgMock(options, { str });
+  }
 };
 
 export default tools;

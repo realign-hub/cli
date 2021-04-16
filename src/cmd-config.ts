@@ -50,6 +50,14 @@ export default [
       cmdCall.emoji(desc);
     },
   },
+  {
+    cmd: 'img-mock <conf>',
+    alias: 'im',
+    desc: '🧩 模拟图片 _ conf => {width}x{height}_{bgc} | bgc=none -> transparent',
+    action(conf = '') {
+      cmdCall.imgMock(conf);
+    },
+  },
 
   // 系统
   {
