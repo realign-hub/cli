@@ -7,11 +7,12 @@ import logBox from '../common/log-box';
 export default (options = {}, cmdOpts: any = {}) => {
   const {
     type = '',
-    str = '',
+    desc = '',
+    mode = '',
   } = cmdOpts;
 
   if (type === 'search') {
-    const choicesSearch = emoji.search(str).map((x: any) => {
+    const choicesSearch = emoji.search(desc, { allMatch: mode === 'am' }).map((x: any) => {
       return {
         name: `${x.emoji}\t${x.key}`,
         value: x.emoji,
@@ -28,7 +29,7 @@ export default (options = {}, cmdOpts: any = {}) => {
         name: 'item',
         type: 'list',
         message: '请选择',
-        default: str,
+        default: desc,
         choices: choicesSearch,
       }
     ]).then((ans: any) => {
@@ -39,7 +40,7 @@ export default (options = {}, cmdOpts: any = {}) => {
       logBox(logs);
     });
   } else if(type === 'find') {
-    console.log(emoji.find(str));
+    console.log(emoji.find(desc));
   } else {
     // qw
   }

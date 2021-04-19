@@ -234,11 +234,15 @@ Emoji.random = function random () {
  *  @param {string} str
  *  @return {Array.<Object>}
  */
-Emoji.search = function search (str) {
+Emoji.search = function search (str, options) {
+  options = options || {};
+  var allMatch = options.allMatch || false;
   var emojiKeys = Object.keys(emojiByName);
   var matcher = stripColons(str);
-  var matchingKeys = emojiKeys.filter(function(key, ins) {
-    return key.toString().indexOf(matcher) !== -1;
+  var matchingKeys = emojiKeys.filter(function(key) {
+    return allMatch
+      ? key.toString() === matcher
+      : key.toString().indexOf(matcher) !== -1;
   });
   return matchingKeys.map(function(key) {
     return {

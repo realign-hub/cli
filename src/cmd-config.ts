@@ -43,11 +43,11 @@ export default [
     },
   },
   {
-    cmd: 'emoji <desc>',
+    cmd: 'emoji <desc> [mode]',
     alias: 'ej',
-    desc: '😃 🔡查表情',
-    action(desc = '') {
-      cmdCall.emoji('search', desc);
+    desc: '😃 🔡查表情 _ mode => { am -> allMatch 全字匹配 }',
+    action(desc = '', mode = '') {
+      cmdCall.emoji('search', { desc, mode });
     },
   },
   {
@@ -55,7 +55,7 @@ export default [
     alias: 'ejf',
     desc: '🔍 😃表情名',
     action(desc = '') {
-      cmdCall.emoji('find', desc);
+      cmdCall.emoji('find', { desc });
     },
   },
   {
