@@ -45,8 +45,8 @@ const tools = {
   urlQRCode(str = '') {
     QRCode(options, { str });
   },
-  emoji(str = '') {
-    Emoji(options, { str });
+  emoji(type: string, str: string) {
+    Emoji(options, { type, str });
   },
   imgMock(str = '') {
     ImgMock(options, { str });

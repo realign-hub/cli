@@ -45,9 +45,17 @@ export default [
   {
     cmd: 'emoji <desc>',
     alias: 'ej',
-    desc: '😃 表情',
+    desc: '😃 🔡查表情',
     action(desc = '') {
-      cmdCall.emoji(desc);
+      cmdCall.emoji('search', desc);
+    },
+  },
+  {
+    cmd: 'emoji-find <emoji>',
+    alias: 'ejf',
+    desc: '🔍 😃表情名',
+    action(desc = '') {
+      cmdCall.emoji('find', desc);
     },
   },
   {
