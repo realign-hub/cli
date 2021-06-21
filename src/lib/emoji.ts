@@ -1,10 +1,12 @@
+import { IF_CmdItemOptions } from '@/typings';
+
 const emoji = require('../../modules/node-emoji');
 const inquirer = require('inquirer');
 const clipboardy = require('clipboardy');
 import TIPS from '../common/tips';
 import logBox from '../common/log-box';
 
-export default (options = {}, cmdOpts: any = {}) => {
+export default (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   const {
     type = '',
     desc = '',
@@ -34,10 +36,10 @@ export default (options = {}, cmdOpts: any = {}) => {
       }
     ]).then((ans: any) => {
       clipboardy.writeSync(`${ans.item}`);
-      const logs = [
-        `\n表情 ${ans.item} ${TIPS.copied}\n`,
-      ];
-      logBox(logs);
+      const obj: any = {
+        表情: ans.item,
+      };
+      logBox(options, obj, TIPS.copied);
     });
   } else if(type === 'find') {
     console.log(emoji.find(desc));

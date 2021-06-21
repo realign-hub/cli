@@ -1,10 +1,13 @@
-const chalk = require('chalk');
-import logBox from '../common/log-box';
+import { IF_CmdItemOptions } from '@/typings';
 
-export default (options: any= {}) => {
+import logBox from '../common/log-box';
+import { getChalk } from '../common/function-help';
+
+export default (options: IF_CmdItemOptions) => {
   const {
     pkg = {},
   } = options;
+  const chalk = getChalk(options);
   const {
     name = '',
   } = pkg;
@@ -13,5 +16,5 @@ export default (options: any= {}) => {
     '',
     'It will come soon.',
   ];
-  logBox(errLogs);
+  logBox(options, errLogs);
 };

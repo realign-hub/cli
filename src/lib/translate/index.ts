@@ -1,6 +1,8 @@
-const chalk = require('chalk');
+import { IF_CmdItemOptions } from '@/typings';
+
 const clipboardy = require('clipboardy');
 import logBox from '../../common/log-box';
+import { getChalk } from '../../common/function-help';
 import TIPS from '../../common/tips';
 
 import BaiDu from './baidu/baidu';
@@ -17,11 +19,12 @@ const TransMap: any = {
   },
 };
 
-export default async (options = {}, cmdOpts: any = {}) => {
+export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   const {
     str = '',
     engine = 'bd',
   } = cmdOpts;
+  const chalk = getChalk(options);
   const enginePro = (TransMap[engine] || {}).engine;
   const engineTitle = (TransMap[engine] || {}).title;
 
@@ -33,21 +36,15 @@ export default async (options = {}, cmdOpts: any = {}) => {
       dst = '',
     },
   } = res;
-  let logs = [];
+  const obj: any = {};
   if (err) {
-    logs = [
-      `${chalk.red('错误')}  ${err}`,
-    ];
+    obj[`${chalk.red('错误')}`] = err;
   } else {
     clipboardy.writeSync(`${dst}`);
-    logs = [
-      `引擎：${chalk.green(engineTitle)}`,
-      '',
-      `查询：${chalk.blue(src)}`,
-      '',
-      `结果：${dst} ${TIPS.copied}`,
-    ];
+    obj['引擎'] = chalk.green(engineTitle);
+    obj['查询'] = chalk.blue(src);
+    obj['结果'] = dst;
   }
 
-  logBox(logs);
+  logBox(options, obj, TIPS.copied);
 };

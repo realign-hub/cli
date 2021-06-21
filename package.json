@@ -1,9 +1,10 @@
 {
   "name": "@re-x/cli",
-  "version": "0.0.1-alpha.17",
+  "version": "0.0.1-alpha.18",
   "description": "A cli of all.",
   "bin": {
-    "re": "./bin/command.js"
+    "re": "./bin/re-terminal.js",
+    "re-e": "./bin/re-electron.js"
   },
   "scripts": {
     "dev": "rm -rf bin && tsc -w",

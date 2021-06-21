@@ -1,13 +1,16 @@
-const chalk = require('chalk');
+import { IF_CmdItemOptions } from '@/typings';
+
 const clipboardy = require('clipboardy');
 import logBox from '../common/log-box';
+import { getChalk } from '../common/function-help';
 import date from '../common/date';
 import TIPS from '../common/tips';
 
-export default (options = {}, cmdOpts: any = {}) => {
+export default (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   const {
     str = '',
   } = cmdOpts;
+  const chalk = getChalk(options);
   const T: any = {
     date: null,
     str: '',
@@ -19,10 +22,10 @@ export default (options = {}, cmdOpts: any = {}) => {
   T.ts = T.date.getTime();
 
   clipboardy.writeSync(`${T.ts}`);
-  const logs = [
-    `${chalk.blue('时间对象')}  ${T.date}`,
-    `${chalk.blue('格式化串')}  ${T.str}`,
-    `${chalk.blue('时间戳ms')}  ${T.ts} ${TIPS.copied}`,
-  ];
-  logBox(logs);
+  const obj: any = {};
+  obj[chalk.blue('时间对象')] = T.date;
+  obj[chalk.blue('格式化串')] =T.str;
+  obj[chalk.blue('时间戳ms')] = T.ts;
+
+  logBox(options, obj, TIPS.copied);
 };
