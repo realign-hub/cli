@@ -15,8 +15,8 @@ export default (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
     bg,
   } = ((str).match(RE) || {}).groups || {};
   const url = `https://api.realign.pro/img-view/p/${w}x${h}?bg=${encodeURIComponent(bg)}`;
-  const obj: any = {
+  const LBO: any = {
     模拟图片地址: chalk.green(url),
   };
-  logBox(options, obj);
+  logBox(options, LBO);
 };

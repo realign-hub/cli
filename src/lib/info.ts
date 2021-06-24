@@ -15,9 +15,9 @@ export default (options: IF_CmdItemOptions) => {
     version = '',
   } = pkg;
   const c = isNormal(version) ? 'blue' : 'yellow';
-  const obj: any = {};
-  obj[`${chalk.blue(name)} ${chalk.yellow('version as follow:')}`] = '';
-  obj[chalk[c](`v${version}`)] = '';
+  const LBO: any = {};
+  LBO[`${chalk.blue(name)} ${chalk.yellow('version as follow:')}`] = '';
+  LBO[chalk[c](`v${version}`)] = '';
 
-  logBox(options, obj);
+  logBox(options, LBO);
 };

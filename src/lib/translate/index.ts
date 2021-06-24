@@ -37,15 +37,15 @@ export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
       dst = '',
     },
   } = res;
-  const obj: any = {};
+  const LBO: any = {};
   if (err) {
-    obj[`${chalk.red('错误')}`] = err;
+    LBO[`${chalk.red('错误')}`] = err;
   } else {
     clipboardy.writeSync(`${dst}`);
-    obj['引擎'] = chalk.green(engineTitle);
-    obj['查询'] = chalk.blue(src);
-    obj['结果'] = dst;
+    LBO['引擎'] = chalk.green(engineTitle);
+    LBO['查询'] = chalk.blue(src);
+    LBO['结果'] = dst;
   }
 
-  logBox(options, obj, TIPS.copied);
+  logBox(options, LBO, TIPS.copied);
 };

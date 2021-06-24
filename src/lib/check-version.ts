@@ -39,19 +39,22 @@ export default (options: IF_CmdItemOptions, done = null) => {
     // checkFn();
     const localVersion = version;
     // const latestVersion = INFO.collected.metadata.version;
-    const obj: any = {};
+    const LBO: any = {};
 
     if (semver.lt(localVersion, latestVersion)) {
-      obj[`${chalk.yellow('A newer version of')} ${chalk.blue(name)} ${chalk.yellow('is available.')}`] = '';
-      obj['latest'] = chalk.green(latestVersion);
-      obj['installed'] = chalk.red(localVersion);
-      obj['Please use follow command to update!'];
-      obj[`${chalk.green('$')} npm i ${name}`] = '';
+      LBO[`${chalk.yellow('A newer version of')} ${chalk.blue(name)} ${chalk.yellow('is available.')}`] = '';
+      LBO['latest'] = chalk.green(latestVersion);
+      LBO['installed'] = chalk.red(localVersion);
+      LBO[`${chalk.green('Please use follow command to update!')}`] = '';
+      LBO[`${chalk.green('$')} npm i ${name}`] = '';
+      LBO[`${chalk.green('$')} npm i ${name} -g`] = '';
+      LBO[`${chalk.green('$')} yarn add ${name}`] = '';
+      LBO[`${chalk.green('$')} yarn add ${name} -g`] = '';
     } else {
-      obj[`${chalk.green('Congratulations!')}`] = '';
-      obj[`Package ${chalk.blue(name)} is the latest version.`] = '';
-      obj[`Current version: ${chalk.green(latestVersion)}`] = '';
+      LBO[`${chalk.green('Congratulations!')}`] = '';
+      LBO[`Package ${chalk.blue(name)} is the latest version.`] = '';
+      LBO[`Current version: ${chalk.green(latestVersion)}`] = '';
     }
-    logBox(options, obj);
+    logBox(options, LBO);
   });
 };

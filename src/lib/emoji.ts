@@ -36,10 +36,10 @@ export default (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
       }
     ]).then((ans: any) => {
       clipboardy.writeSync(`${ans.item}`);
-      const obj: any = {
+      const LBO: any = {
         表情: ans.item,
       };
-      logBox(options, obj, TIPS.copied);
+      logBox(options, LBO, TIPS.copied);
     });
   } else if(type === 'find') {
     console.log(emoji.find(desc));

@@ -18,9 +18,9 @@ export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
     .send(JSON.stringify({
       url: str,
     }));
-  const obj = {
+  const LBO = {
     地址: chalk.green(str),
     短链: chalk.blue(JSON.parse(res.text).data.shortUrl),
   };
-  logBox(options, obj);
+  logBox(options, LBO);
 };

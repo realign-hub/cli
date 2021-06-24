@@ -11,10 +11,11 @@ export default (options: IF_CmdItemOptions) => {
   const {
     name = '',
   } = pkg;
-  const errLogs = [
-    `${chalk.blue(name)} ${chalk.yellow('has no doctor now.')}`,
-    '',
-    'It will come soon.',
-  ];
-  logBox(options, errLogs);
+
+  const LBO: any = {};
+
+  LBO[`${chalk.blue(name)} ${chalk.yellow('has no doctor now.')}`] = '';
+  LBO['It will come soon.'] = '';
+
+  logBox(options, LBO);
 };

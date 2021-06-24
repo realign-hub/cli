@@ -22,10 +22,10 @@ export default (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   T.ts = T.date.getTime();
 
   clipboardy.writeSync(`${T.ts}`);
-  const obj: any = {};
-  obj[chalk.blue('时间对象')] = T.date;
-  obj[chalk.blue('格式化串')] =T.str;
-  obj[chalk.blue('时间戳ms')] = T.ts;
+  const LBO: any = {};
+  LBO[chalk.blue('时间对象')] = T.date;
+  LBO[chalk.blue('格式化串')] =T.str;
+  LBO[chalk.blue('时间戳ms')] = T.ts;
 
-  logBox(options, obj, TIPS.copied);
+  logBox(options, LBO, TIPS.copied);
 };

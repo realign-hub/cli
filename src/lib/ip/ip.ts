@@ -11,10 +11,10 @@ export default async (options: IF_CmdItemOptions) => {
   const open = await getOpen();
   const ipTables = { ...getLocal(), ...open };
 
-  const obj: any = {};
+  const LBO: any = {};
   Object.keys(ipTables).forEach((k) => {
-    obj[`${chalk.blue(k)}`] = chalk.yellow(ipTables[k]);
+    LBO[`${chalk.blue(k)}`] = chalk.yellow(ipTables[k]);
   });
 
-  logBox(options, obj);
+  logBox(options, LBO);
 };
