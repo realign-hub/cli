@@ -27,8 +27,9 @@ export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   const chalk = getChalk(options);
   const enginePro = (TransMap[engine] || {}).engine;
   const engineTitle = (TransMap[engine] || {}).title;
-
-  const res = await enginePro(str);
+  // 删除回车换行
+  const strNoRN = str.replace(/[\r\n]/g, '');
+  const res = await enginePro(strNoRN);
   const {
     err = '',
     data: {

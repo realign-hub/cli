@@ -18,11 +18,10 @@ export default (options: IF_CmdItemOptions, obj: any, attachLog: string = '') =>
   if (env === 'terminal') {
     const strArr = buildStrArr(obj);
     if (attachLog) {
-      strArr.push('');
       strArr.push(attachLog);
     }
     console.log('');
-    console.log(boxen(strArr.join('\n'), {
+    console.log(boxen(strArr.join('\n\n'), {
       padding: 1,
       borderColor: 'green'
     }));
