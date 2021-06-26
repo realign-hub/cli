@@ -1,6 +1,6 @@
 {
   "name": "@re-x/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A cli of all.",
   "bin": {
     "re": "./bin/re-terminal.js",
@@ -35,7 +35,9 @@
     "clipboardy": "^2.3.0",
     "commander": "^6.2.1",
     "crypto-js": "^4.0.0",
+    "fs-extra": "^10.0.0",
     "inquirer": "^8.0.0",
+    "level": "^7.0.0",
     "lodash.toarray": "^4.4.0",
     "module-alias": "^2.2.2",
     "moment": "^2.29.1",

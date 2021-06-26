@@ -8,6 +8,7 @@ import Short from './../lib/url/short';
 import QRCode from './../lib/url/qrcode';
 import Emoji from './../lib/emoji';
 import ImgMock from '../lib/img-mock';
+import Store from '../lib/store';
 
 import { IF_CmdItemOptions, IF_CmdCoreOpts } from '@/typings';
 
@@ -54,6 +55,12 @@ export default (opts: IF_CmdCoreOpts) => {
     },
     imgMock(str = '') {
       ImgMock(options, { str });
-    }
+    },
+    store(type = '', value: any) {
+      Store(options, {
+        type,
+        value,
+      });
+    },
   };
 };

@@ -95,6 +95,14 @@ export function getCmdList(cmdOptions: IF_CmdCoreOpts) {
         cmdFns.info();
       }
     },
+    {
+      cmd: 'store <type> <value>',
+      alias: 'st',
+      desc: '🌥️  敏感信息 type => one of ["short_url_token"]; value => The value of type store',
+      action(type = '', value = '') {
+        cmdFns.store(type, value);
+      }
+    },
   ];
 }
 
