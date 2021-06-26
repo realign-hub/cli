@@ -2,7 +2,7 @@ import { IF_CmdItemOptions } from '@/typings';
 
 import logBox from '../../common/log-box';
 import { getChalk } from '../../common/function-help';
-import { shortUrlTokenSetter } from '../../common/store';
+import { getDataItem } from '../../common/store';
 
 export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   const {
@@ -11,10 +11,7 @@ export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   } = cmdOpts;
   const chalk = getChalk(options);
   let setRes = null;
-
-  if(type === 'short_url_token') {
-    setRes = await shortUrlTokenSetter(value);
-  }
+  setRes = await getDataItem(type).setter(value);
 
   const LBO: any = {};
   if(setRes === true) {

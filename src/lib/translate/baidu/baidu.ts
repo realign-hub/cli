@@ -16,27 +16,31 @@ const ErrorMap: any = {
 };
 
 export default async (word = '') => {
-  const resultStr = await base(word);
-  const BODY = JSON.parse(resultStr.text) || {};
-  const cbArgs = {
-    err: '',
-    data: {
-      src: '',
-      dst: '',
-    },
-  };
-  const {
-    error_code = '',
-    trans_result = [],
-  } = BODY;
-  if (error_code) {
-    cbArgs.err = ErrorMap[error_code];
-  } else {
-    const R = trans_result[0];
+  try {
+    const resultStr = await base(word);
+    const BODY = JSON.parse(resultStr.text) || {};
+    const cbArgs = {
+      err: '',
+      data: {
+        src: '',
+        dst: '',
+      },
+    };
+    const {
+      error_code = '',
+      trans_result = [],
+    } = BODY;
+    if (error_code) {
+      cbArgs.err = ErrorMap[error_code];
+    } else {
+      const R = trans_result[0];
 
-    cbArgs.data.src = R.src;
-    cbArgs.data.dst = R.dst;
+      cbArgs.data.src = R.src;
+      cbArgs.data.dst = R.dst;
+    }
+
+    return cbArgs;
+  } catch(err) {
+    //
   }
-
-  return cbArgs;
 };

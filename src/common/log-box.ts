@@ -10,10 +10,10 @@ const buildStrArr = (obj: any) => {
   return arr;
 };
 
-export default (options: IF_CmdItemOptions, obj: any, attachLog: string = '') => {
+export default (options: IF_CmdItemOptions | null, obj: any, attachLog: string = '') => {
   const {
     env = 'terminal',
-  } = options;
+  } = options || {};
 
   if (env === 'terminal') {
     const strArr = buildStrArr(obj);

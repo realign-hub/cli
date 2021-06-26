@@ -1,3 +1,5 @@
+import { Data } from '../../../common/store';
+
 const superagent = require('superagent');
 const md5 = require('crypto-js/md5');
 const hex = require('crypto-js/enc-hex');
@@ -9,8 +11,8 @@ const hex = require('crypto-js/enc-hex');
 const getRandomN = (roundTo = 1) => Math.round(Math.random() * roundTo);
 
 export default async (word = '') => {
-  const appKey = '57bf0c4858b91aed';
-  const secretKey = 'sWHUw3lvieWyeZ1Lc1lDIQVTu84qirOf';
+  const appKey = await Data.YD_TRANSLATE_APP_KEY.getter();
+  const secretKey = await Data.YD_TRANSLATE_SECRET_KEY.getter();
 
   ///
   // 在get请求中，中文需要进行uri编码

@@ -1,6 +1,10 @@
 import { IF_CmdCoreOpts } from '@/typings';
 import cmdCore from './cmd-core';
 
+import {
+  getStoreTypeList,
+} from '../common/store';
+
 export function getCmdList(cmdOptions: IF_CmdCoreOpts) {
   const cmdFns = cmdCore(cmdOptions);
   return [
@@ -98,7 +102,7 @@ export function getCmdList(cmdOptions: IF_CmdCoreOpts) {
     {
       cmd: 'store <type> <value>',
       alias: 'st',
-      desc: '🌥️  敏感信息 type => one of ["short_url_token"]; value => The value of type store',
+      desc: `🌥️  敏感信息 type => one of [${getStoreTypeList().join(', ')}]; value => The value of type store`,
       action(type = '', value = '') {
         cmdFns.store(type, value);
       }

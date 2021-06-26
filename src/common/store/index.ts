@@ -1,13 +1,22 @@
-import {
-  SHORT_URL_TOKEN,
+import Data from './data';
 
-  _getter,
-  _setter,
-} from './config';
+export const getStoreTypeList = () => {
+  return Object.keys(Data).map((k) => (Data[k].storeType));
+};
 
-export async function shortUrlTokenSetter(value: any) {
-  return await _setter(SHORT_URL_TOKEN.DP, SHORT_URL_TOKEN.KEY, value);
-}
-export async function shortUrlTokenGetter() {
-  return await _getter(SHORT_URL_TOKEN.DP, SHORT_URL_TOKEN.KEY);
-}
+export const getTypeBigTypeObj = () => {
+  // { bd: 'BD' }
+  return Object.fromEntries(
+    Object.keys(Data).map((bigKey) => (
+      [Data[bigKey].storeType ,bigKey]
+    ))
+  );
+};
+
+export const getDataItem = (type: string) => {
+  return Data[getTypeBigTypeObj()[type]];
+};
+
+export {
+  Data,
+};

@@ -3,10 +3,7 @@ import { IF_CmdItemOptions } from '@/typings';
 const superagent = require('superagent');
 import logBox from '../../common/log-box';
 import { getChalk } from '../../common/function-help';
-import { shortUrlTokenGetter } from '../../common/store';
-import {
-  LEVEL_GETTER_ERROR,
-} from '../../common/const';
+import { Data } from '../../common/store';
 
 export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   const {
@@ -20,7 +17,7 @@ export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
   let LBO: any = {};
 
   try {
-    const token = await shortUrlTokenGetter();
+    const token = await Data.SHORT_URL_TOKEN.getter();
     const res = await superagent
       .post('https://api.realign.pro/o/short_url')
       .set('Content-Type', 'application/json')
@@ -46,10 +43,6 @@ export default async (options: IF_CmdItemOptions, cmdOpts: any = {}) => {
     }
     logBox(options, LBO);
   } catch(err) {
-    if(err.message === LEVEL_GETTER_ERROR) {
-      LBO[`${chalk.red('短链 token 缺失！')}`] = '';
-      LBOAddTipsSetToken(LBO);
-      logBox(options, LBO);
-    }
+    //
   }
 };
